@@ -1,3 +1,5 @@
+// import users from '@src/data/data.json'
+
 Vue.component('app-header', {
   template: "<div><h1>Component Title</h1></div>"
 });
@@ -11,6 +13,9 @@ var view_model = new Vue({
   data: {
     navTitle: "Vue CRUD",
     footerMessage: "textDriven.io (2019)",
+    // return {
+    //   users:user
+    // }
     users: [
       'Fred',
       'Barney',
