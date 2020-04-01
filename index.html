@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Vue CRUD</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- <link rel="stylesheet" href="css/debug.css"> -->
+  <!-- Vue.js 2 development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="vue_app">
+    <div class="grid-container">
+      <app-header class="header-title">
+        <h1>{{ navTitle }}</h1>
+      </app-header>
+      <nav class="navigation-links">
+        <ul>
+          <li>home</li>
+          <li>About</li>
+          <li>Contact</li>
+        </ul>
+      </nav>
+      <div class="data-content">
+        <div class="add-user-input">
+          <input type="text" v-model="newUser" placeholder="Enter New User">
+          <input type="submit" value="Add User" v-on:click="addNewUser(newUser)">
+          <br>
+        </div>
+        <h4>{{ numberOfUsersText }}</h4>
+        <button v-on:click.once="changeDisplay">Display Users</button>
+        <h1>List of Users</h1>
+        <br>
+        <h2>v-if</h2>
+        <div v-if="!displayUsers">
+          <h4>Users are not being displayed</h4>
+        </div>
+        <div v-else>
+          <ul v-for="(user, index) in users">
+            <li v-bind:style="{color: usersTextColor[index]}"> {{index + 1}}: {{ user }}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="search-content">
+        <h1 v-bind:class="searchTextClass">Search Users:</h1>
+        <br>
+        <label for="searchInput">Search for:</label>
+        <input v-model="searchName" type="text" id="searchInput">
+        <br>
+        <ul v-for="user in searchResults">
+          <li>{{ user }}</li>
+        </ul>
+      </div>
+      <app-footer class="footer">
+        <h4>{{ footerMessage }}</h4>
+      </app-footer>
+    </div>
+  </div>
+  <!-- VueJS Code -->
+  <script src='app.vue' type="text/javascript"></script>
+</body>
+
+</html>
